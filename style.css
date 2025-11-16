@@ -1,0 +1,153 @@
+/* --- 1. Theme Variables (CSS Custom Properties) --- */
+:root {
+    /* Default (Light) Theme Colors */
+    --body-bg: #f0f2f5;
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --primary-color: #0078d4;
+    --primary-hover: #005a9e;
+    --border-color: #eee;
+    --input-border: #ccc;
+    --completed-text: #999;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme Overrides - applied when body has the class 'dark-theme' */
+.dark-theme {
+    --body-bg: #1c1c1c;
+    --container-bg: #2a2a2a;
+    --text-color: #f0f0f0;
+    --primary-color: #0099ff; /* Brighter blue for contrast */
+    --primary-hover: #007acc;
+    --border-color: #383838;
+    --input-border: #444;
+    --completed-text: #777;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* --- 2. Global Styles and Background (Now using Variables) --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--body-bg); /* Use variable */
+    color: var(--text-color); /* Use variable */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 40px 0;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+}
+
+/* --- 3. Main App Container --- */
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: var(--container-bg); /* Use variable */
+    box-shadow: 0 4px 12px var(--shadow-color); /* Use variable */
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color); /* Use variable */
+    margin-bottom: 25px;
+}
+
+/* --- 4. Input Area Styling --- */
+.input-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--input-border); /* Use variable */
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+    outline: none;
+    background-color: var(--container-bg); /* Match container/input background */
+    color: var(--text-color); /* Match text color */
+}
+
+#add-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--primary-color); /* Use variable */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.2s;
+}
+
+#add-button:hover {
+    background-color: var(--primary-hover); /* Use variable */
+}
+
+/* --- 5. Task List Styling --- */
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color); /* Use variable */
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+/* ... (Rest of the li styling remains the same) ... */
+
+/* Styling for the task text itself */
+.task-text {
+    flex-grow: 1;
+    padding-left: 10px;
+    font-size: 16px;
+    color: var(--text-color); /* Use variable */
+}
+
+/* Completed Task State */
+.completed .task-text {
+    text-decoration: line-through;
+    color: var(--completed-text); /* Use variable */
+}
+
+/* --- 6. Delete Button Styling --- */
+.delete-button {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 10px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#task-list li:hover .delete-button {
+    opacity: 1;
+}
+
+/* --- 7. Theme Toggle Button Styling --- */
+.theme-toggle {
+    float: right; /* Position it on the top right */
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--primary-hover);
+}
